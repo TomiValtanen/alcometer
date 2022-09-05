@@ -19,10 +19,10 @@ function calculating(){
   if(alcoholLevel < 0) alcoholLevel=0;
   setResult(alcoholLevel);
 }
-const list=[];
+const options=[];
 
  for(let i=1;i<=10;i++){
-  list.push(<option>{i}</option>)
+  options.push(<option>{i}</option>)
  }
 
 
@@ -38,14 +38,14 @@ const list=[];
   <div>
     <label>Bottles</label>
     <select name="bottles" value={bottles} onChange={e=>setBottles(e.target.value)}>
-    {list}
+    {options}
     </select>
   </div>
 
   <div>
     <label>Time</label>
     <select name="time" value={time} onChange={e=>setTime(e.target.value)}>
-    {list}
+    {options}
     </select>
   </div>
 
