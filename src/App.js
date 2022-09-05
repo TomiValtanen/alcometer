@@ -2,23 +2,29 @@ import {useState} from 'react'
 import './App.css';
 
 function App() {
-const[weight, setWeight]=useState(0);
+const[weight, setWeight]=useState(80);
 const[bottles,setBottles]=useState(1);
 const[time, setTime]=useState(1);
 const[gender, setGender]=useState("male");
 const[result,setResult]=useState(0);
 
 function calculating(){
-  let litres= bottles * 0.33;
-  let grams= litres * 8 * 4.5;
-  let burning= weight / 10;
-  let gramsLeft=grams - (burning * time);
+  const litres= bottles * 0.33;
+  const grams= litres * 8 * 4.5;
+  const burning= weight / 10;
+  const gramsLeft=grams - (burning * time);
   let alcoholLevel=0;
 
   gender==="male" ? alcoholLevel= gramsLeft / (weight * 0.7) : alcoholLevel= gramsLeft / (weight * 0.6);
   if(alcoholLevel < 0) alcoholLevel=0;
   setResult(alcoholLevel);
 }
+const list=[];
+
+ for(let i=1;i<=10;i++){
+  list.push(<option>{i}</option>)
+ }
+
 
 
   return (
@@ -32,28 +38,14 @@ function calculating(){
   <div>
     <label>Bottles</label>
     <select name="bottles" value={bottles} onChange={e=>setBottles(e.target.value)}>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
+    {list}
     </select>
   </div>
 
   <div>
     <label>Time</label>
     <select name="time" value={time} onChange={e=>setTime(e.target.value)}>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
+    {list}
     </select>
   </div>
 
